@@ -1,0 +1,2 @@
+<h2 class="header">Ini halaman about</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet impedit voluptatem suscipit qui, obcaecati ipsa, dolore necessitatibus consectetur aspernatur placeat.</p>
