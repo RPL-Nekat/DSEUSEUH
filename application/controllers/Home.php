@@ -20,7 +20,8 @@ class Home extends CI_Controller
 		$data['title'] = "D'Seuseuh Laundry";
 		$data['viewnya'] = 'home';
 		$data['feedbacks'] = $feedbacks->result();
-		$data['pakets'] = $pakets->result();		
+		$data['pakets'] = $pakets->result();
+		$data['manuals'] = $this->DSEUSEUH_Model->read('manual')->result();
 		$data['web_info'] = $this->DSEUSEUH_Model->read('web_info')->result();		
 		foreach ($data['web_info'] as $key => $web_info) {
 			$data['nama'] = $web_info->nama;
@@ -28,7 +29,7 @@ class Home extends CI_Controller
 			$data['kontak'] = $web_info->kontak;
 			$data['alamat'] = $web_info->alamat;
 			$data['tentang_kami'] = $web_info->tentang_kami;
-		}
+		}		
 		$this->load->view('layouts/main_layout', $data);
 	}
 

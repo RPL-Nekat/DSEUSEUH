@@ -8,6 +8,7 @@
           <thead>
             <tr>
               <th>Header</th>
+              <th>Subheader</th>
               <th>Deskripsi</th>
               <th>Aksi</th>
             </tr>
@@ -31,6 +32,11 @@
       <div class="input-field col s12">
         <input id="header-simpan" name="header-simpan" type="text" class="validate">
         <label for="header-simpan">Header</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="subheader-simpan" name="subheader-simpan" type="text" class="validate">
+        <label for="subheader-simpan">Subheader</label>
       </div>
 
       <div class="input-field col s12">
@@ -60,6 +66,11 @@
       <div class="input-field col s12">
         <input id="header-update" name="header-update" type="text" class="validate">
         <label for="header-update">Header</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="subheader-update" name="subheader-update" type="text" class="validate">
+        <label for="subheader-update">Subheader</label>
       </div>
 
       <div class="input-field col s12">
@@ -95,7 +106,7 @@
     tampilManual();
     // addForm();
     
-    $('#mydata').dataTable();
+    // $('#mydata').dataTable();
     $('select').formSelect();
 
     //fungsi tampil data langsung
@@ -111,9 +122,10 @@
           for (i=0; i<data.length; i++) {
             html += '<tr>' +
             '<td>' + data[i].header + '</td>' +
+            '<td>' + data[i].subheader + '</td>' +
             '<td>' + data[i].deskripsi + '</td>' +
             '<td>' + 
-            '<a href="javascript:void();" class="btn-floating waves-effect waves-light item_edit yellow" data-id="' + data[i].id_manual + '" data-header="' + data[i].header + '" data-deskripsi="' + data[i].deskripsi + '"><i class="material-icons">edit</i></a>' +
+            '<a href="javascript:void();" class="btn-floating waves-effect waves-light item_edit yellow" data-id="' + data[i].id_manual + '" data-header="' + data[i].header + '" data-subheader="' + data[i].subheader + '" data-deskripsi="' + data[i].deskripsi + '"><i class="material-icons">edit</i></a>' +
             '<a href="javascript:void();" class="btn-floating waves-effect waves-light item_delete pink" data-id="' + data[i].id_manual + '" data-header="' + data[i].header + '" style="margin-left: 10px;"><i class="material-icons">delete</i></a>' +
             '</td>' +
             '</tr>';
@@ -126,14 +138,16 @@
     //fungsi simpan
     $('.btn-save').on('click', function() {
       var header = $('[name="header-simpan"]').val();
+      var subheader = $('[name="subheader-simpan"]').val();
       var deskripsi = $('[name="deskripsi-simpan"]').val();
       $.ajax({
         type: 'POST',
         url: '<?= base_url('manual/simpanManual'); ?>',
         dataType: 'json',
-        data: {'header': header, 'deskripsi': deskripsi},
+        data: {'header': header, 'subheader':subheader, 'deskripsi': deskripsi},
         success: function(data) {
           $('[name="header-simpan"]').val('');
+          $('[name="subheader-simpan"]').val('');
           $('[name="deskripsi-simpan"]').val('');
           $('.modal').modal('close');
           tampilManual();
@@ -147,11 +161,13 @@
     $('#show_data').on('click', '.item_edit', function() {
       var id_manual = $(this).data('id');
       var header = $(this).data('header');
+      var subheader = $(this).data('subheader');
       var deskripsi = $(this).data('deskripsi');
 
       $('#modalEdit').modal('open');
       $('[name="id_manual"]').val(id_manual);
       $('[name="header-update"]').val(header);
+      $('[name="subheader-update"]').val(subheader);
       $('[name="deskripsi-update"]').val(deskripsi);
       M.updateTextFields();
     });    
@@ -160,15 +176,17 @@
     $('.btn-update').on('click', function() {
       var id_manual = $('[name="id_manual"]').val();
       var header = $('[name="header-update"]').val();
+      var subheader = $('[name="subheader-update"]').val();
       var deskripsi = $('[name="deskripsi-update"]').val();
       $.ajax({
         type: 'POST',
         url: '<?= base_url('manual/updateManual'); ?>',
         dataType: 'json',
-        data: {'id_manual': id_manual, 'header': header, 'deskripsi': deskripsi},
+        data: {'id_manual': id_manual, 'header': header, 'subheader': subheader, 'deskripsi': deskripsi},
         success: function(data) {
           $('[name="id_manual"]').val('');
           $('[name="header-update"]').val('');
+          $('[name="subheader-update"]').val('');
           $('[name="deskripsi-update"]').val('');
           $('.modal').modal('close');
           tampilManual();

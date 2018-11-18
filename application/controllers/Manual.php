@@ -37,12 +37,11 @@ class Manual extends CI_Controller
 	}
 
 	public function simpanManual()
-	{
-		$header = $this->input->post('header');
-		$deskripsi = $this->input->post('deskripsi');
+	{		
 		$data = array(
-			'header' => $header,
-			'deskripsi' => $deskripsi
+			'header' => $this->input->post('header'),
+			'subheader' => $this->input->post('subheader'),
+			'deskripsi' => $this->input->post('deskripsi')
 		);
 		$id = $this->DSEUSEUH_Model->create('manual', $data);
 		echo json_encode($data);
@@ -54,6 +53,7 @@ class Manual extends CI_Controller
 		$where = array('id_manual' => $id_manual);
 		$data = array(
 			'header' => $this->input->post('header'),
+			'subheader' => $this->input->post('subheader'),
 			'deskripsi' => $this->input->post('deskripsi')
 		);
 		$manuals = $this->DSEUSEUH_Model->update($where, $data, 'manual');

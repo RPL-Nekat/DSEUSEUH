@@ -17,7 +17,7 @@
       <?php if ($this->session->level == 'admin'): ?>
         <li><a href="<?= base_url('dashboard'); ?>"><i class="material-icons">dashboard</i>Dashboard</a></li>
       <?php endif ?>      
-      <!-- <li><a href=""><i class="material-icons">account_circle</i> Profil</a></li> -->
+      <li><a href=""><i class="material-icons">account_circle</i> Profil</a></li>
       <?php if ($this->session->level == 'admin'): ?>
         <li><a href="<?= base_url('web_info'); ?>"><i class="material-icons">settings</i> Pengaturan</a></li>
       <?php endif ?>
