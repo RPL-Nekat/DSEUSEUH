@@ -22,6 +22,12 @@ class Home extends CI_Controller
 		$data['feedbacks'] = $feedbacks->result();
 		$data['pakets'] = $pakets->result();
 		$data['manuals'] = $this->DSEUSEUH_Model->read('manual')->result();
+		foreach ($data['manuals'] as $key => $manuals) {
+			$data['nama'] = $manuals->header;
+			$data['subheader'] = $manuals->subheader;
+			$data['deskripsi'] = $manuals->deskripsi;
+			$data['thumbnail_manual'] = $manuals->thumbnail;
+		}
 		$data['web_info'] = $this->DSEUSEUH_Model->read('web_info')->result();		
 		foreach ($data['web_info'] as $key => $web_info) {
 			$data['nama'] = $web_info->nama;

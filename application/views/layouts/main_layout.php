@@ -16,6 +16,7 @@
 	<link href="<?= base_url('assets/css/form.css') ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="<?= base_url('assets/fonts/material-icons/material-icons.css') ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="<?= base_url('assets/vendors/prism/prism.css') ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link href="<?= base_url('assets/vendors/dropify/css/dropify.min.css'); ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="<?= base_url('assets/vendors/DataTables-1.10.18/css/jquery.dataTables.css'); ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="shortcut icon" href="<?= base_url('assets/img/laundry/washing-machine.png') ?>">	
 
@@ -59,6 +60,7 @@
 
 	<!--  Scripts-->  
 	<script type="text/javascript" src="<?= base_url('assets/js/materialize.js') ?>"></script>	
+	<script type="text/javascript" src="<?= base_url('assets/vendors/dropify/js/dropify.min.js'); ?>"></script>
 	<script type="text/javascript" charset="utf8" src="<?= base_url('assets/vendors/DataTables-1.10.18/js/jquery.dataTables.js'); ?>"></script>
 	<script type="text/javascript">
 

@@ -107,7 +107,7 @@
     // addForm();
     
     // $('#mydata').dataTable();
-    $('select').formSelect();
+    // $('select').formSelect();
 
     //fungsi tampil data langsung
     function tampilManual() {

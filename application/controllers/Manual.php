@@ -13,22 +13,10 @@ class Manual extends CI_Controller
 		if ($this->session->username == null) {
 			redirect();
 		}
-		else if ($this->session->level == 'costumer') {
+		else if ($this->session->level == 'customer') {
 			redirect();
 		}
-	}
-
-	public function index()
-	{
-		$manuals = $this->DSEUSEUH_Model->read('manual');
-		$data = array(
-			'title' => 'Paket Laundry | Tambah',
-			'viewnya' => 'layouts/dashboard_layout',
-			'sidenav' => 'auth/dashboard/webContent/changeManual',
-			'manuals' => $manuals->result()
-		);
-		$this->load->view('layouts/main_layout', $data);		
-	}
+	}	
 
 	public function dataManual()
 	{

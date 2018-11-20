@@ -10,20 +10,13 @@ class Paket extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('DSEUSEUH_Model');
-	}
-
-	public function index()
-	{
-		$pakets = $this->DSEUSEUH_Model->read('paket');
-		$data = array(
-			'title' => 'Paket Laundry',
-			'viewnya' => 'layouts/dashboard_layout',
-			'sidenav' => 'auth/dashboard/paket/paketLaundry',
-			'pakets' => $pakets->result()
-			
-		);
-		$this->load->view('layouts/main_layout', $data);
-	}
+		if ($this->session->username == null) {
+			redirect();
+		}
+		else if ($this->session->level == 'customer') {
+			redirect();
+		}
+	}	
 
 	public function addPaket()
 	{

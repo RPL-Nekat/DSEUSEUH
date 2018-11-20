@@ -1,4 +1,8 @@
-<?php $url = $this->uri->segment(1); ?>
+<?php 
+	$url = $this->uri->segment(1); 
+	$url2 = $this->uri->segment(2); 
+	$urll = uri_string();
+ ?>
 
 <div class="navbar-fixed">
 	<nav class="nav-dash">
@@ -8,8 +12,8 @@
 			<div class="breadcrumb-nav hide-on-med-and-down show-on-large">
 				<a href="<?= base_url(); ?>" class="breadcrumb"><i class="material-icons">home</i></a>
 				<a href="<?= base_url('dashboard'); ?>" class="breadcrumb">Dashboard</a>
-				<?php if ($url == uri_string() && $url != 'dashboard'): ?>
-					<a href="#!" class="breadcrumb"><?= ucwords(uri_string()); ?></a>
+				<?php if ($url2): ?>
+					<a href="#!" class="breadcrumb"><?= ucwords($url2); ?></a>
 				<?php endif ?>
 			</div>			
 		</div>
@@ -17,8 +21,8 @@
 </div>
 
 <ul id="dropdown1" class="dropdown-content">
-	<!-- <li><a href=""><i class="material-icons">account_circle</i>Profil</a></li> -->
-	<li><a href="<?= base_url('web_info'); ?>"><i class="material-icons">settings</i>Konfigurasi</a></li>
+	<li><a href="<?= base_url('auth/profil'); ?>"><i class="material-icons">account_circle</i>Profil</a></li>
+	<li><a href="<?= base_url('dashboard/profil_web'); ?>"><i class="material-icons">settings</i>Konfigurasi</a></li>
 	<li><a href="<?= base_url('auth/logout'); ?>"><i class="material-icons">power_settings_new</i>Keluar</a></li>
 </ul>
 
@@ -28,35 +32,35 @@
 		<div class="background">
 			<img src="<?= base_url('assets/img/bg/background1.jpg'); ?>">
 		</div>
-		<a href="#user"><img class="circle" src="<?= base_url('assets/img/avatar/user.png'); ?>"></a>
-		<a href="#name" class="dropdown-trigger" data-target="dropdown1"><span class="white-text name"><?= $this->session->nama; ?> <i class="material-icons right">arrow_drop_down</i></span></a>
+		<a href="#user"><img class="circle" src="<?= base_url('assets/img/avatar/'.$this->session->avatar); ?>"></a>
+		<a href="#name" class="dropdown-trigger" data-target="dropdown1"><span class="white-text name"><?= $this->session->nama_usr; ?> <i class="material-icons right">arrow_drop_down</i></span></a>
 		<a href="#email"><span class="white-text email"><?= $this->session->email; ?></span></a>
 		</div>
 	</li>
-	<li><a href="#!"><strong><?= $this->session->level; ?></strong></a></li>
-	<li><a href="#!"><i class="fas fa-phone fa-lg blue-text" style="margin-right: 10px;"></i> <?= $this->session->telp; ?></a></li>
+	<li><a href="#!"><strong><?= ucwords($this->session->level); ?></strong></a></li>
+	<li><a href="#!"><i class="fas fa-phone fa-lg blue-text" style="margin-right: 10px;"></i> <?= $this->session->no_telp; ?></a></li>
 	<li><div class="divider"></div></li>
-	<li class="<?php if($url=="paket" || $url == "laundry" || $url == "laundryKeluar" || $url == "member"){echo "active";}?>">
+	<li class="<?php if($url2 == 'paket' || $url2 == 'laundry_masuk' || $url2 == 'laundry_keluar' || $url2 == 'member'){echo "active";} ?>">
 		<div class="collapsible-header"><a class="subheader" style="padding: 0 15px 0 15px;"><i class="fas fa-edit fa-lg" style="margin-right: 10px;"></i>Kelola</a></div>
 		<div class="collapsible-body">
 			<ul>
-				<li><a class="waves-effect <?= activate_link('paket'); ?>" href="<?= base_url('paket'); ?>">Paket Laundry</a></li>
-				<li><a class="waves-effect <?= activate_link('laundry'); ?>" href="<?= base_url('laundry'); ?>">Laundry Masuk</a></li>
-				<li><a class="waves-effect <?= activate_link('laundryKeluar'); ?>" href="<?= base_url('laundryKeluar'); ?>">Laundry Keluar</a></li>
-				<li><a class="waves-effect <?= activate_link('member') ?>" href="<?= base_url('member'); ?>">Member</a></li>
+				<li><a class="waves-effect <?= activate_link('paket'); ?>" href="<?= base_url('dashboard/paket'); ?>">Paket Laundry</a></li>
+				<li><a class="waves-effect <?= activate_link('laundry_masuk'); ?>" href="<?= base_url('dashboard/laundry_masuk'); ?>">Laundry Masuk</a></li>
+				<li><a class="waves-effect <?= activate_link('laundry_keluar'); ?>" href="<?= base_url('dashboard/laundry_keluar'); ?>">Laundry Keluar</a></li>
+				<li><a class="waves-effect <?= activate_link('member') ?>" href="<?= base_url('dashboard/member'); ?>">Member</a></li>
 			</ul>						
 		</div>
 	</li>	
 	<li><div class="divider"></div></li>	
-	<li class="<?php if($url=="feedback" || $url == "manual" || $url =="web_info"){echo "active";}?>">
+	<li class="<?php if($url2 == 'testimoni' || $url2 == 'manual' || $url2 == 'profil_web'){echo "active";} ?>">
 		<div class="collapsible-header"><a class="subheader" style="padding: 0 15px 0 15px;"><i class="fas fa-cog fa-lg" style="margin-right: 10px;"></i>Konfigurasi</a></div>
 		<div class="collapsible-body">
 			<ul>
-				<li><a class="waves-effect <?= activate_link('feedback'); ?>" href="<?= base_url('feedback'); ?>">Testimoni</a></li>
-				<li><a class="waves-effect <?= activate_link('manual'); ?>" href="<?= base_url('manual'); ?>">Panduan</a></li>
+				<li><a class="waves-effect <?= activate_link('testimoni'); ?>" href="<?= base_url('dashboard/testimoni'); ?>">Testimoni</a></li>
+				<li><a class="waves-effect <?= activate_link('user_manual'); ?>" href="<?= base_url('dashboard/user_manual'); ?>">Panduan</a></li>
 				<!-- <li><a class="waves-effect" href="#!">Kutipan</a></li>
 				<li><a class="waves-effect" href="#!">Layanan</a></li> -->
-				<li><a class="waves-effect <?= activate_link('web_info'); ?>" href="<?= base_url('web_info'); ?>">Informasi Web</a></li>
+				<li><a class="waves-effect <?= activate_link('profil_web'); ?>" href="<?= base_url('dashboard/profil_web'); ?>">Informasi Web</a></li>
 			</ul>													
 		</div>
 	</li>	
@@ -69,8 +73,8 @@
 		<nav class="hide-on-med-and-up col s12">
 			<div class="nav-wrapper">
 				<a href="<?= base_url('dashboard'); ?>" class="breadcrumb"><i class="material-icons">dashboard</i> Dashboard</a>
-				<?php if ($url == uri_string() && $url != 'dashboard'): ?>
-					<a href="#!" class="breadcrumb"><?= ucwords(uri_string()); ?></a>
+				<?php if ($url2): ?>
+					<a href="#!" class="breadcrumb"><?= ucwords($url2); ?></a>
 				<?php endif ?>
 			</div>
 		</nav>

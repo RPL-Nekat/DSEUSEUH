@@ -13,23 +13,10 @@ class LaundryKeluar extends CI_Controller
 		if ($this->session->username == null) {
 			redirect();
 		}
-		else if ($this->session->level == 'costumer') {
+		else if ($this->session->level == 'customer') {
 			redirect();
 		}
-	}
-
-	public function index()
-	{		
-		$lndry = $this->DSEUSEUH_Model->read('laundry');
-		$data = array(
-			'title' => 'Laundry Masuk',
-			'viewnya' => 'layouts/dashboard_layout',
-			'sidenav' => 'auth/dashboard/laundry/laundryKeluar',
-			'lndry' => $lndry->result()
-			
-		);
-		$this->load->view('layouts/main_layout', $data);
-	}
+	}	
 
 	public function addlaundry()
 	{

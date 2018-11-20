@@ -7,6 +7,12 @@ class Laporan extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('DSEUSEUH_Model');
+		if ($this->session->username == null) {
+			redirect();
+		}
+		else if ($this->session->level == 'customer') {
+			redirect();
+		}
 	}
 
 	public function index()

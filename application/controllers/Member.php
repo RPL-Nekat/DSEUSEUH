@@ -15,23 +15,10 @@
 		if ($this->session->username == null) {
 			redirect();
 		}
-		else if ($this->session->level == 'costumer') {
+		else if ($this->session->level == 'customer') {
 			redirect();
 		}
-	}
-
-	public function index()
-	{
-		$users = $this->DSEUSEUH_Model->read('user');
-		$data = array(
-			'title' => 'Member',
-			'viewnya' => 'layouts/dashboard_layout',
-			'sidenav' => 'auth/dashboard/member/dataMember',
-			'users' => $users->result()
-			
-		);
-		$this->load->view('layouts/main_layout', $data);
-	}
+	}	
 
 	public function addMember()
 	{	

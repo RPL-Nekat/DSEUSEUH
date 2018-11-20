@@ -4,7 +4,7 @@
 			<div class="collapsible-header"><h4><i class="material-icons">local_laundry_service</i>Laundry</h4></div>
 			<div class="collapsible-body">
 				<div class="row">
-						<div class="col s12 m6 l3 card bg-biru waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					<a href="<?= base_url('dashboard/laundry_masuk'); ?>" class="col s12 m6 l3 card bg-biru waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
 								<i class="material-icons" style="font-size: 60px;">shopping_cart</i>
@@ -16,8 +16,8 @@
 								<p>Cucian</p>
 							</div>
 						</div>
-					</div>
-					<a href="<?= base_url('member'); ?>" class="col s12 m6 l3 card bg-merah waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					</a>
+					<a href="<?= base_url('dashboard/member'); ?>" class="col s12 m6 l3 card bg-merah waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
 								<i class="material-icons" style="font-size: 60px;">account_box</i>
@@ -30,7 +30,7 @@
 							</div>
 						</div>
 					</a>
-					<a class="col s12 m6 l3 card bg-kuning waves-effect waves-light mh100" style="border-right: 5px solid #fff;" href="<?= base_url('feedback'); ?>">
+					<a class="col s12 m6 l3 card bg-kuning waves-effect waves-light mh100" style="border-right: 5px solid #fff;" href="<?= base_url('dashboard/testimoni'); ?>">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
 								<i class="material-icons" style="font-size: 60px;">message</i>
@@ -56,7 +56,7 @@
 			<div class="collapsible-header"><h4><i class="material-icons">settings</i>Konfigurasi</h4></div>
 			<div class="collapsible-body">
 				<div class="row">
-					<a href="<?= base_url('manual'); ?>" class="col s12 m6 l6 card bg-merah waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					<a href="<?= base_url('dashboard/user_manual'); ?>" class="col s12 m6 l6 card bg-merah waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
 								<i class="material-icons" style="font-size: 60px;">library_books</i>
@@ -67,7 +67,7 @@
 							</div>
 						</div>
 					</a>
-					<a href="<?= base_url('feedback'); ?>" class="col s12 m6 l6 card bg-kuning waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					<a href="" class="col s12 m6 l6 card bg-kuning waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
 								<i class="material-icons" style="font-size: 60px;">format_quote</i>
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 					</a>			
-					<a href="<?= base_url('web_info'); ?>" class="col s12 m12 l12 card bg-hijau waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					<a href="<?= base_url('dashboard/profil_web'); ?>" class="col s12 m12 l12 card bg-hijau waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s6 m6">
 								<i class="material-icons" style="font-size: 60px;">local_laundry_service</i>

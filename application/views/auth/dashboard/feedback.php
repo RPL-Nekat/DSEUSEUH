@@ -25,7 +25,7 @@
           <form method="POST" action="<?= base_url('feedback/update/'.$feedback->id_feedback); ?>">
             <button type="submit" class="btn-floating btn-large btn-waves btn-effect tooltipped" name="type" value="approve" data-position="left" data-tooltip="Tampilkan testimoni"><i class="fas fa-check"></i></button>
           </form>          
-        <?php endif ?>        
+        <?php endif ?>
         <a href="<?= base_url('feedback/delete/'.$feedback->id_feedback); ?>" class="btn-floating btn-large btn-waves btn-effect red tooltipped" data-position="left" data-tooltip="Hapus testimoni" style="margin-top: 10px;"><i class="fas fa-trash"></i></a>
       </div>
     </div>

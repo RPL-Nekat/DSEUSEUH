@@ -14,21 +14,9 @@ class Feedback extends CI_Controller
 		if ($this->session->username == null) {
 			redirect();
 		}
-		else if ($this->session->level == 'costumer') {
+		else if ($this->session->level == 'customer') {
 			redirect();
 		}
-	}
-
-	public function index()
-	{		
-		$feedbacks = $this->DSEUSEUH_Model->read('feedback');
-		$data = array(
-			'title' => 'Testimoni',
-			'viewnya' => 'layouts/dashboard_layout',
-			'sidenav' => 'auth/dashboard/feedback',
-			'feedbacks' => $feedbacks->result()
-		);
-		$this->load->view('layouts/main_layout', $data);
 	}
 
 	public function save()

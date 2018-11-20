@@ -85,6 +85,15 @@ class DSEUSEUH_Model extends CI_Model
 		return $this->db->get($table);
 	}
 
+	public function upload_image($table, $image, $where)
+	{
+		if ($table=="user") {
+			$data = array('avatar' => $image);
+			$this->db->where($where);
+			return $this->db->update('user', $data);
+		}
+	}
+
 	//paket
 	public function AllDatapaket()
 	{
