@@ -7,12 +7,6 @@ class Laporan extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('DSEUSEUH_Model');
-		if ($this->session->username == null) {
-			redirect();
-		}
-		else if ($this->session->level == 'customer') {
-			redirect();
-		}
 	}
 
 	public function index()
@@ -24,23 +18,21 @@ class Laporan extends CI_Controller{
 	}
 
 	public function laporan() {
-		$this->load->model('model_admin');
 		$isi['nama_usr'] = $this->session->userdata('nama_usr');
 		$isi['content'] = 'admin/laporan';
 		$isi['data'] 	 = $this->DSEUSEUH_Model->getinsertlaundry();
 		$this->load->view('admin/tampilan_admin',$isi);
 	}
 
-	function cetak_semua() {
+	function page_laporan() {
 		$this->load->library('PDF');
-		$data['data'] = $this->DSEUSEUH_Model->getdatalaundry();
-		$this->load->view('Laporan/cetak_semua', $data);
+		$data['data']=$this->DSEUSEUH_ModeL->getinsertlaundry();
+		$this->load->view('Laporan/page_laporan', $data);
 	}
 
 	// public function cetak($id) {
 	// 	$this->load->library('PDF');
 	// 	$data['data']=$this->Model_admin->cetak();
-	// 	//$this->load->model('Model_admin');
 	// 	$this->db->get_where('laundry',['id_laundry'=>$id])->row();
 	// 	$key = $this->uri->segment(3);
 	// 	$this->db->where('id_laundry',$key);
@@ -52,10 +44,10 @@ class Laporan extends CI_Controller{
 		$this->load->library('PDF');
 		$this->load->model('DSEUSEUH_Model');
 		$isi['nama_usr'] = $this->session->userdata('nama_usr');
-		
+		$isi['content'] = 'auth/dashboard/laundry/laundryMasuk';
 		$isi['data'] 	 = $this->DSEUSEUH_Model->masuk();
 		$this->db->get_where('laundry',['id_laundry'])->row();
-		$key = $this->uri->segment(3);
+		$key = $this->uri->segment(4);
 		$this->db->where('id_laundry',$key);
 		$this->load->view('Laporan/cetak',$isi);
 

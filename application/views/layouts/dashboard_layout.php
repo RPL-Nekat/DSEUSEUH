@@ -1,19 +1,25 @@
 <?php 
 	$url = $this->uri->segment(1); 
 	$url2 = $this->uri->segment(2); 
+	$url3 = $this->uri->segment(3);
 	$urll = uri_string();
  ?>
 
 <div class="navbar-fixed">
 	<nav class="nav-dash">
 		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo">D'Seuseuh</a>		
+			<a href="#!" class="brand-logo">DSeuseuh</a>		
 			<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="fas fa-bars fa-2x white-text" data-fa-transform="down-3"></i></a>		
 			<div class="breadcrumb-nav hide-on-med-and-down show-on-large">
 				<a href="<?= base_url(); ?>" class="breadcrumb"><i class="material-icons">home</i></a>
-				<a href="<?= base_url('dashboard'); ?>" class="breadcrumb">Dashboard</a>
-				<?php if ($url2): ?>
+				<?php if ($url): ?>
+					<a href="<?= base_url($url); ?>" class="breadcrumb"><?= ucwords($url); ?></a>
+					<?php if ($url2): ?>
 					<a href="#!" class="breadcrumb"><?= ucwords($url2); ?></a>
+						<?php if ($url3): ?>
+							<a href="#!" class="breadcrumb"><?= ucwords($url3); ?></a>
+						<?php endif ?>
+					<?php endif ?>				
 				<?php endif ?>
 			</div>			
 		</div>
@@ -51,6 +57,17 @@
 			</ul>						
 		</div>
 	</li>	
+
+	<li><div class="divider"></div></li>
+	<li class="<?php if($url2 == 'laporan'){echo "active";} ?>">
+		<div class="collapsible-header"><a class="subheader" style="padding: 0 15px 0 15px;"><i class="fas fa-chart-pie fa-lg" style="margin-right: 10px;"></i>Laporan</a></div>
+		<div class="collapsible-body">
+			<ul>
+				<li><a href="<?= base_url('dashboard/laporan'); ?>" class="waves-effect <?= activate_link('laporan'); ?>">Cetak Laporan</a></li>
+			</ul>
+		</div>
+	</li>	
+
 	<li><div class="divider"></div></li>	
 	<li class="<?php if($url2 == 'testimoni' || $url2 == 'manual' || $url2 == 'profil_web'){echo "active";} ?>">
 		<div class="collapsible-header"><a class="subheader" style="padding: 0 15px 0 15px;"><i class="fas fa-cog fa-lg" style="margin-right: 10px;"></i>Konfigurasi</a></div>

@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-s12 right">
+  <div class="col s12 right-align" style="margin-top: 20px;">
     <!-- <a href="" class="btn-floating btn-large btn-waves btn-effect circle" ><i class="fas fa-pen"></i></a> -->
-    <a href="<?= base_url('member/addMember'); ?>" class="btn-floating btn-large btn-waves btn-effect"><i class="fas fa-plus"></i></a>
+    <a href="<?= base_url('member/addMember'); ?>" class="btn-floating btn-large btn-waves btn-effect"><i class="material-icons">add</i></a>
   </div>
 </div>
 <div class="row">  
   <div class="col s12">
     <div class="card">
       <div class="card-content">
-        <table >
+        <table class="table-responsive">
           <thead>
             <tr>
                 <th width="5%" class="center">#</th>
@@ -38,3 +38,38 @@
     </div>    
   </div>
 </div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col s12">
+        <blockquote><h3>User</h3></blockquote>
+        <hr>
+    </div>
+    <div class="col s12">
+      <div class="row">
+          <div class="col l6 s12">
+            <div class="card">
+              <div class="card-content black-text">
+                <span class="card-title">Admin</span>
+                <p>Manajemen Data Program Keahlian.</p>
+              </div>
+              <div class="card-action">
+                <a href="<?php echo base_url("ANROC_Jurusan/Program_Keahlian") ?>"><button class="btn">Manajemen</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col l6 s12">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Member</span>
+                <p>Manajemen Data Paket Keahlian.</p>
+              </div>
+              <div class="card-action">
+                <a href="<?php echo base_url("ANROC_Jurusan/Paket_Keahlian") ?>"><button class="btn">Manajemen</button></a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div> -->

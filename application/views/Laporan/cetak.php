@@ -79,36 +79,45 @@ $pdf->AddPage();
     $pdf->Ln();
      
       
-	$html = '';
-	//$no=0;
+  $html = '';
+  //$no=0;
       foreach ($data->result() as $row) {
 
-	$html ='
+  $html1 ='
       <p>Kode Transaksi   :'.$row->id_laundry.'</p>
       <p>Customer       :'.$row->nama_konsumen.'</p>
-
-      <br>
-      <br>
-	<table cellspacing="0" cellpadding="1">
-			<tr>
-                  
-	            <th width="30%">Paket</th>
-              <th>Harga</th>
-              <th width="20%">Berat(kg)</th>
-              <th width="30%">Tanggal Masuk</th>
-                  
-                </tr>
-
-           <tr>
-            	<td>'.$row->nama_paket.'</td>
-              <td>'.$row->harga.'</td>
-            	<td>'.$row->berat.'</td>
-            	<td>'.$row->tgl_masuk.'</td>
-            	
-                  
-            	</tr>';
-              //$pdf->Line();
-            }
+      <p>--------------------------------------------------------------------------------------------</p>
+      <table >
+        <tr>
+          <th>Paket</th>
+          <th>Harga</th>
+          <th>Berat</th>
+        </tr>
+        <tr>
+          <td> '.$row->nama_paket.' </td>
+          <td> '.$row->harga.' </td>
+          <td> '.$row->berat.' </td>
+        </tr>
+        <tr>
+          <td colspan="3">--------------------------------------------------------------------------------------------</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td width="300px"> Total :'.$row->total.'</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td width="300px"> Bayar Tunai :'.$row->bayar.'</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td width="300px"> Kembalian :'.$row->kembalian.'</td>
+        </tr>
+      </table>
+      
+      ';
+}
+// $pdf->Cell(90, 0, '-------------------------------------------------------------------------------------------', 0, 0, 'L');
 
 
             
@@ -117,23 +126,6 @@ $pdf->AddPage();
             $html.='</table>';
             $pdf->writeHTML($html1);
             $pdf->Cell(120, 0, '-------------------------------------------------------------------------------------------', 0, 0, 'L');
-            $pdf->writeHTML($html2);
-          // $pdf->Cell(0, 0, 1, 1, 'L', 1, 0);
-           //$pdf->Ln();
-            $pdf->Cell(90, 0, '-------------------------------------------------------------------------------------------', 0, 0, 'L');
-            
-            $pdf->Cell(105, 5, 'Total Bayar', 0, 0, 'R');
-            $pdf->Cell(25, 5, str_replace(',', '.', number_format($row->total)), 0, 0, 'L');
-            $pdf->Ln();
-
-            $pdf->Cell(105, 5, 'Tunai', 0, 0, 'R');
-            $pdf->Cell(25, 5, str_replace(',', '.', number_format($row->bayar)), 0, 0, 'L');
-            $pdf->Ln();
-
-            $pdf->Cell(105, 5, 'Kembalian', 0, 0, 'R');
-            $pdf->Cell(25, 5, str_replace(',', '.', number_format($row->kembalian) ), 0, 0, 'L');
-            $pdf->Ln();
-            $pdf->Cell(130, 5, '-------------------------------------------------------------------------------------------', 0, 0, 'L');
             $pdf->Ln();
             $pdf->Ln();
             $pdf->Cell(110, 5, "TERIMA KASIH", 0, 0, 'C');

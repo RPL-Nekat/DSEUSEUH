@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-s12 right">
+  <div class="col s12">
     <!-- <a href="" class="btn-floating btn-large btn-waves btn-effect circle" ><i class="fas fa-pen"></i></a> -->
-    <a href="<?= base_url('paket/addPaket'); ?>" class="btn-floating btn-large btn-waves btn-effect"><i class="fas fa-plus"></i></a>
+    <a href="<?= base_url('paket/addPaket'); ?>" class="btn-floating btn-large btn-waves btn-effect right"><i class="fas fa-plus"></i></a>
   </div>
 </div>
 <div class="row">  

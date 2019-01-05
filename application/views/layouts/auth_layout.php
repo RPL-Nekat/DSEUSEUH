@@ -3,29 +3,29 @@
     <li>
       <img src="<?= base_url('assets/img/laundry/1.jpg'); ?>"> <!-- random image -->
       <div class="caption left-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <h3>Sibuk?<br>Cucian numpuk?<br>Gak ada Waktu?</h3>
+        <h5 class="light grey-text text-lighten-3">D'seuseuh aja.</h5>
       </div>
     </li>
     <li>
       <img src="<?= base_url('assets/img/laundry/2.jpg'); ?>"> <!-- random image -->
       <div class="caption left-align">
-        <h3>Left Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <h3>Nyeseuh jadi mudah!</h3>
+        <h5 class="light grey-text text-lighten-3">Cepat, wangi, dan terpercaya.</h5>
       </div>
     </li>
     <li>
       <img src="<?= base_url('assets/img/laundry/3.jpg'); ?>"> <!-- random image -->
       <div class="caption left-align">
-        <h3>Right Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <h3>Gak ganggu waktu<br>kamu kok</h3>
+        <h5 class="light grey-text text-lighten-3">Panggil saja kami.</h5>
       </div>
     </li>
     <li>
       <img src="<?= base_url('assets/img/laundry/4.jpg'); ?>"> <!-- random image -->
       <div class="caption left-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <h3>Nunggu apalagi?</h3>
+        <h5 class="light grey-text text-lighten-3">Ayo! Cucianmu gak bisa bersih sendiri.</h5>
       </div>
     </li>
   </ul>

@@ -77,6 +77,49 @@ class Dashboard extends CI_Controller
 		$this->load->view('layouts/main_layout', $data);
 	}
 
+	public function laporan()
+	{
+		$this->load->model('LaporanMasukModel');
+		if(isset($_GET['filter']) && ! empty($_GET['filter'])){ // Cek apakah user telah memilih filter dan klik tombol tampilkan
+            $filter = $_GET['filter']; // Ambil data filder yang dipilih user
+
+            if($filter == '1'){ // Jika filter nya 1 (per tanggal)
+                $tgl = $_GET['tanggal'];
+
+                $ket = 'Data Semua Cucian Pada Tanggal '.date('d-m-y', strtotime($tgl));
+                $url_cetak = 'Laporan_masuk/cetak?filter=1&tanggal='.$tgl;
+                $transaksi = $this->LaporanMasukModel->view_by_date($tgl); // Panggil fungsi view_by_date yang ada di LaporanMasukModel
+            }else if($filter == '2'){ // Jika filter nya 2 (per bulan)
+                $bulan = $_GET['bulan'];
+                $tahun = $_GET['tahun'];
+                $nama_bulan = array('', 'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+
+                $ket = 'Data Semua Cucian Pada Bulan '.$nama_bulan[$bulan].' '.$tahun;
+                $url_cetak = 'Laporan_masuk/cetak?filter=2&bulan='.$bulan.'&tahun='.$tahun;
+                $transaksi = $this->LaporanMasukModel->view_by_month($bulan, $tahun); // Panggil fungsi view_by_month yang ada di LaporanMasukModel
+            }else{ // Jika filter nya 3 (per tahun)
+                $tahun = $_GET['tahun'];
+
+                $ket = 'Data Semua Cucian Pada Tahun '.$tahun;
+                $url_cetak = 'Laporan_masuk/cetak?filter=3&tahun='.$tahun;
+                $transaksi = $this->LaporanMasukModel->view_by_year($tahun); // Panggil fungsi view_by_year yang ada di LaporanMasukModel
+            }
+        }else{ // Jika user tidak mengklik tombol tampilkan
+            $ket = 'Semua Data Cucian';
+            $url_cetak = 'Laporan_masuk/cetak';
+            $transaksi = $this->LaporanMasukModel->view_all(); // Panggil fungsi view_all yang ada di LaporanMasukModel
+        }
+
+        $data['ket'] = $ket;
+        $data['url_cetak'] = base_url('index.php/'.$url_cetak);
+        $data['transaksi'] = $transaksi;
+        $data['option_tahun'] = $this->LaporanMasukModel->option_tahun();
+        $data['title'] = 'Laporan';
+        $data['viewnya'] = 'layouts/dashboard_layout';
+        $data['sidenav'] = 'laporan_periode/laporan_masuk';
+        $this->load->view('layouts/main_layout', $data);
+	}
+
 	public function user_manual()
 	{
 		$manuals = $this->DSEUSEUH_Model->read('manual');

@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-s12 right" style="padding-top: 20px;padding-right: 30px;">
+    <a href="<?= base_url('laundry/addlaundrykeluar'); ?>" class="btn-floating btn-large btn-waves btn-effect"><i class="fas fa-plus"></i></a>
+  </div>
+</div>
 <div class="row">  
   <div class="col s12">
     <div class="card">
@@ -19,26 +24,45 @@
             </tr>
           </thead>
 
-          <tbody>
-            <?php foreach ($lndry as $key => $laundry): ?>
-              <tr>
-                <th class="center"><?= $key+1; ?></th>
-                <td><?= $laundry->id_laundry; ?></td>
-                <td><?= $laundry->nama_konsumen; ?></td>
-                <td>Rp. <?= number_format($laundry->harga); ?></td>
-                <td><?= number_format($laundry->berat); ?></td>
-                <td><?= number_format($laundry->total); ?></td>
-                <td><?= $laundry->tgl_masuk; ?></td>
-                <td><?= $laundry->tgl_keluar?></td>
-                <td><?= $laundry->bayar; ?></td>
-                <td><?= $laundry->kembalian; ?></td>
-                <td><?= $laundry->paket_id_paket; ?></td>
-              </tr>
-            <?php endforeach ?>            
+          <tbody id="show_data">
+                    
           </tbody>
         </table>
       </div>
     </div>    
-   <div class="btn btn-success"><a href="<?php echo site_url('Laporan/cetak_semua') ?>">Cetak</a></div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    tampilLaundryKeluar();
+    function tampilLaundryKeluar() {
+      $.ajax({
+        type: 'ajax',
+        url: '<?= base_url('laundry/dataLaundryKeluar'); ?>',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+          var html = '';
+          var i;
+          for (i=0; i<data.length; i++) {
+            html += '<tr>' +
+                '<th class="center">' + (i+1) + '</th>' +
+                '<td>' + data[i].id_laundry + '</td>' +
+                '<td>' + data[i].nama_konsumen + '</td>' +
+                '<td>Rp. ' + data[i].harga + '</td>' +
+                '<td>' + data[i].berat + ' Kg</td>' +
+                '<td>' + data[i].total + '</td>' +
+                '<td>' + data[i].tgl_masuk + '</td>' +
+                '<td>' + data[i].tgl_keluar + '</td>' +
+                '<td>' + data[i].bayar + '</td>' +
+                '<td>' + data[i].kembalian + '</td>' +
+                '<td>' + data[i].nama_paket + '</td>' +
+              '</tr>';
+              $('#show_data').html(html);    
+          }
+        }
+      });
+    }
+  });
+</script>

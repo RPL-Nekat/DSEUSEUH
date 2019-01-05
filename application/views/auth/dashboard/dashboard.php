@@ -41,14 +41,14 @@
 							</div>
 						</div>
 					</a>
-					<div class="col s12 m6 l3 card bg-hijau waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
+					<a href="<?= base_url('dashboard/laporan'); ?>" class="col s12 m6 l3 card bg-hijau waves-effect waves-light mh100" style="border-right: 5px solid #fff;">
 						<div class="card-content white-text">
 							<div class="col s7 m7">
-								<i class="material-icons" style="font-size: 60px;">attach_money</i>
+								<i class="material-icons" style="font-size: 60px;">pie_chart</i>
 							</div>
-							<div class="col s5 m5 right-align">test</div>
+							<div class="col s5 m5 right-align">Laporan</div>
 						</div>
-					</div>	      	
+					</a>	      	
 				</div>		
 			</div>
 		</li>

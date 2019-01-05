@@ -2,33 +2,23 @@
     $conn = mysqli_connect("localhost","root","");
     mysqli_select_db($conn,"dseuseuh");     
     ?>
+<form class="col s12" method="POST" action="<?= base_url('laundry/simpanlaundry'); ?>">
 <div class="row center-align">  
-  <div class="col s9" style="padding-left: 200px;">
-        <h3 class="flow-text">Tambah Data Laundry Masuk</h3>
-        <form class="col s12" method="POST" action="<?= base_url('laundry/simpanlaundry'); ?>">
-            <!-- <div class="row">
-                <div class="input-field col s12">
-                  <input name="id_laundry" id="id_laundry" type="text" class="validate">
-                  <label for="id_laundry">Kode Laundry</label>
-                </div>                
-            </div> -->
+  <h3 class="flow-text">Tambah Data Laundry Masuk</h3>
+  <div class="col offset-s1 s6">                
             <div class="row">
                 <div class="input-field col s12">
-                  <input name="nama_konsumen" id="nama_konsumen" type="text" class="validate" value="<?= $this->session->nama; ?>">
-                  <label for="nama_konsumen">Nama Komsumen</label>
+                  <?php if ($this->session->level == 'customer'): ?>
+                    <input name="nama_konsumen" id="nama_konsumen" type="text" class="validate" value="<?= $this->session->nama_usr; ?>">  
+                  <?php else: ?>
+                      <input name="nama_konsumen" id="nama_konsumen" type="text" class="validate" value="">
+                  <?php endif ?>                  
+                  <label for="nama_konsumen">Nama Konsumen</label>
                 </div>                
-            </div>
+            </div>            
             <div class="row">
                 <div class="input-field col s12">
-                  <select name="status" id="status">
-                      <option value="1">Masuk</option>
-                    </select>
-                  <label for="status">Status</label>
-                </div>                
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <select name="paket_id_paket" id="paket_id_paket" onchange="changeValue(this.value)">
+                  <select name="id_paket" id="id_paket" onchange="changeValue(this.value)">
                       <option value=0>-Pilih Paket-</option>
                       <?php 
                     $result = mysqli_query($conn,"select * from paket");    
@@ -39,52 +29,60 @@
                     }      
                 ?>
                     </select>
-                  <label for="paket_id_paket">Paket</label>
+                  <label for="id_paket">Paket</label>
                 </div>                
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <input name="jrsn" id="jrsn" type="text" class="validate" onkeyup="sum();" readonly>
-                  <label for="jrsn">Harga</label>
-                </div>                
-            </div>
+            </div>            
             <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="brt" id="brt" onkeyup="sum();" class="validate" />
-                    <label for="brt">Berat</label>
+                    <label for="brt">Berat per KG</label>
                 </div>             
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="t" id="t" onkeyup="kem();" class="validate" readonly/>
-                    <label for="t">Total</label>
-                </div>             
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="by" id="by" onkeyup="kem();" class="validate" />
-                    <label for="by">Bayar</label>
-                </div>             
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="k" id="k" class="validate" />
-                    <label for="k">Kembalian</label>
-                </div>             
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="tgl_masuk" id="tgl_masuk" class="validate datepicker" />
-                    <label for="tgl_masuk">Tanggal Masuk</label>
-                </div>             
-            </div>
-
-            <div class="row right-align" style="padding-right: 10px;">
-                <button class="waves-effect waves-light btn-small">Simpan</button>
-            </div>
-        </form>
+            <div class="card">
+              <div class="card-content">
+                    <div class="row">
+                      <div class="input-field col s6">
+                          <input type="text" name="by" id="by" onkeyup="kem();" class="validate" />
+                          <label for="by">Bayar</label>
+                      </div>
+                      <div class="input-field col s6">
+                          <input type="text" name="k" id="k" class="validate" />
+                          <label for="k">Kembalian</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                          <input type="text" name="tgl_masuk" id="tgl_masuk" class="validate datepicker" />
+                          <label for="tgl_masuk">Tanggal Masuk</label>
+                      </div>
+                    </div>
+                    <div class="row right-align">
+                        <button class="waves-effect waves-light btn-small">Simpan</button>
+                    </div>
+              </div>
+            </div>        
+  </div>
+  <div class="col s4">
+    <h3 class="flow-text">Detail</h3>
+    <div class="card">
+      <div class="card-content">
+        <div class="input-field">
+          <input name="kode_laundry" id="kode_laundry" type="text" class="validate" value="<?= substr(md5(uniqid(mt_rand(), true)) , 0, 8); ?>">
+          <label for="kode_laundry">Kode Laundry</label>
+        </div>
+        <div class="input-field">
+          <input name="jrsn" id="jrsn" type="text" class="validate" onkeyup="sum();" readonly>
+          <label for="jrsn">Harga Paket </label>
+        </div>
+        <div class="input-field">
+            <input type="text" name="t" id="t" onkeyup="kem();" class="validate" readonly>
+            <label for="t">Total</label>
+        </div>                
+      </div>
     </div>
+  </div>
 </div>
+</form>
 <script type="text/javascript">
     $(document).ready(function(){
     $('select').formSelect();
@@ -94,11 +92,11 @@
     });
   });
 </script>
-<script type="text/javascript">
-    // M.updateTextFields();
+<script type="text/javascript">    
     <?php echo $jsArray; ?>  
     function changeValue(id_paket){  
-    document.getElementById('jrsn').value = dtMhs[id_paket].jrsn;  
+      document.getElementById('jrsn').value = dtMhs[id_paket].jrsn;  
+      M.updateTextFields();
     };  
 
     function sum() {
@@ -108,14 +106,16 @@
       if (!isNaN(result)) {
          document.getElementById('t').value = result;
       }
+      M.updateTextFields();
     }
     function kem() {
-          var txtFirstNumberValue = document.getElementById('by').value;
-          var txtSecondNumberValue = document.getElementById('t').value;
-          var result = parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue);
-          if (!isNaN(result)) {
-             document.getElementById('k').value = result;
-          }
+      var txtFirstNumberValue = document.getElementById('by').value;
+      var txtSecondNumberValue = document.getElementById('t').value;
+      var result = parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue);
+      if (!isNaN(result)) {
+         document.getElementById('k').value = result;
+      }
+      M.updateTextFields();
     }
   
 </script>

@@ -54,6 +54,18 @@ class DSEUSEUH_Model extends CI_Model
 			return $query;
 		}
 
+		elseif ($table=='laundry') {
+			$this->db->select('*');
+			$this->db->from('laundry');
+			$this->db->join('user', 'laundry.user_id_usr = user.id_user');
+			$this->db->join('paket', 'laundry.paket_id_paket = paket.id_paket');
+			if (!empty($where)) {
+				$this->db->where($where);
+			}
+			$query = $this->db->get();
+			return $query;
+		}
+
 		else {
 			if (!empty($where)) {
 				return $this->db->get_where($table, $where);
@@ -265,17 +277,17 @@ class DSEUSEUH_Model extends CI_Model
 		$this->db->where('id_laundry',$key);
 		$this->db->delete('laundry');
 	}
-		public function masuk()
+	public function masuk()
 	{
 		$data = " SELECT
 		laundry.id_laundry,
 		laundry.nama_konsumen,
 		laundry.harga,
+		laundry.total,
 		laundry.berat,
 		laundry.`status`,
 		laundry.tgl_masuk,
 		laundry.bayar,
-		laundry.total,
 		laundry.kembalian,
 		paket.nama_paket
 		FROM
@@ -284,7 +296,6 @@ class DSEUSEUH_Model extends CI_Model
 
 
 		";
-		
 		return $this->db->query($data);
 	}
 }

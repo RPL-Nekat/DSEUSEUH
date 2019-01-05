@@ -1,5 +1,5 @@
 <div class="row center-align">  
-  <div class="col s9" style="padding-left: 200px;">
+  <div class="col offset-s1 s10">
       	<h3 class="flow-text">Tambah data Member</h3>
       	<form class="col s12" method="POST" action="<?= base_url('member/simpanAdmin'); ?>">
 	      	<div class="row">

@@ -4,7 +4,7 @@
   
     <div class="row header-content">
       <div class="col s12 m5 l5">
-        <?php if ($this->session->nama != null): ?>
+        <?php if ($this->session->nama_usr != null): ?>
           <ul class="card collapsible black-text">
             <li class="active">
               <div class="collapsible-header"><i class="material-icons">filter_drama</i>Cucianku</div>
@@ -18,10 +18,10 @@
             </li>
             <li>
               <div class="collapsible-header"><i class="material-icons">account_circle</i>Profilku</div>
-              <div class="collapsible-body">
-                <p><?= $this->session->nama; ?></p>
-                <p><?= $this->session->telp; ?></p>
-                <p><?= $this->session->email; ?></p>
+              <div class="collapsible-body">                  
+                <p><span>Nama   : </span><?= $this->session->nama_usr; ?></p>
+                <p><span>Telp   : </span><?= $this->session->no_telp; ?></p>                  
+                <p><span>Email  :</span><?= $this->session->email; ?></p>
               </div>
             </li>
           </ul>
